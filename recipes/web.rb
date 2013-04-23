@@ -3,7 +3,7 @@ include_recipe 'resque-tng::server'
 web_exec = ''
 web_exec << "#{node[:resque_tng][:bundler_exec]} exec" if node[:resque_tng][:bundled]
 if(node[:resque_tng][:bundled])
-  web_exec << "#{File.basename(node[:resque_tng][:web][:exec]} "
+  web_exec << "#{File.basename(node[:resque_tng][:web][:exec])}"
 else
   web_exec << "#{node[:resque_tng][:web][:exec]} "
 end
