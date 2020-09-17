@@ -30,11 +30,7 @@ if redis_node
   node.default['resque_tng']['redis'][:port] = redis_node[:redis][:listen_port]
 end
 
-config_dir = if node['resque_tng']['config_dir']
-               node['resque_tng']['config_dir']
-             else
-               File.join(node['resque_tng']['app_dir'], 'config')
-             end
+config_dir = node['resque_tng']['config_dir'] || File.join(node['resque_tng']['app_dir'], 'config')
 
 directory File.join(config_dir, 'initializers') do
   owner node['resque_tng']['owner']
